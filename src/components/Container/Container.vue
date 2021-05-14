@@ -9,6 +9,7 @@
       :windSpeed="formatWindSpeed(location)"
       :humidity="location.data.current.weather.hu"
       :timeStamp="formatTimeStamp(location)"
+         :weatherIconSrc="location.data.current.weather.ic"
       />
   </section>
 </template>
