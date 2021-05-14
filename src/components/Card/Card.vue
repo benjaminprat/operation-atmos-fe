@@ -1,10 +1,11 @@
 <template>
   <article class="location-card" :id="id">
-    <div class="button-delete-container">
-      <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+    <div class="button-container">
+      <button class="button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">🔄</button>
+      <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
-    <h2>{{ formatLocation() }}</h2>
-    <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon"> -->
+    <h2>{{ locale }}</h2>
+    <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" :alt="weatherIconAlt" class="weather-icon"> -->
     <h3>Weather</h3>
     <p>{{ temperature }}°F</p>
     <p>Wind Speed: {{ windSpeed }}mph</p>
@@ -12,10 +13,7 @@
     <h3>Air Quality</h3>
     <p>{{ aqi }} AQI</p>
     <p>{{ determineAqiMessage() }}</p>
-    <button class="button-allTrails" type="button" name="button">Plan an activity here on AllTrails</button>
-    <p class="timeStamp">Last Update: {{ timeStamp }}
-      <button class="card-button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">Refresh</button>
-    </p>
+    <p>{{ timeStamp }}</p>
   </article>
 </template>
 
@@ -24,8 +22,7 @@ export default {
   name: 'Card',
   props: {
     temperature: Number,
-    city: String,
-    state: String,
+    locale: String,
     aqi: Number,
     windSpeed: Number,
     humidity: Number,
@@ -33,17 +30,36 @@ export default {
     weatherIconSrc: String,
     id: Number
   },
+  data: () => ({
+    weatherIcons: [
+      { id: '01d', desc: 'Clear skies sunny weather icon' },
+      { id: '01n', desc: 'Clear skies moon weather icon' },
+      { id: '02d', desc: 'Few clouds sun weather icon' },
+      { id: '02n', desc: 'Few clounds moon weather icon' },
+      { id: '03d', desc: 'Scattered clouds weather icon' },
+      { id: '04d', desc: 'Broken clouds weather icon' },
+      { id: '09d', desc: 'Shower rain weather icon' },
+      { id: '10d', desc: 'Rainy day weather icon' },
+      { id: '10n', desc: 'Rainy night weather icon' },
+      { id: '11d', desc: 'Thunderstorm weather icon' },
+      { id: '13d', desc: 'Snow weather icon' },
+      { id: '50d', desc: 'Misty Weather Icon' }
+    ],
+    weatherIconAlt: ''
+  }),
   methods: {
-    formatLocation () {
-      return `${this.city}, ${this.state}`
-    },
     formatWeatherIcon () {
-      const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n', '11d', '13d', '50d']
-      if (weatherIcons.includes(this.weatherIconSrc)) {
+      const foundIcon = this.weatherIcons.find(icon => {
+        return icon.id === this.weatherIconSrc
+      })
+
+      if (foundIcon) {
+        this.weatherIconAlt = foundIcon.desc
         return this.weatherIconSrc
-      } else if (!weatherIcons.includes(this.weatherIconSrc)) {
-        const nums = weatherIcons.find(icon => {
-          return this.weatherIconSrc.slice(0, 2) === icon.slice(0, 2)
+      } else if (!foundIcon) {
+        const nums = this.weatherIcons.find(icon => {
+          this.weatherIconAlt = icon.desc
+          return this.weatherIconSrc.slice(0, 2) === icon.id.slice(0, 2)
         })
         return nums
       }
