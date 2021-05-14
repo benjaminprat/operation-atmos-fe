@@ -1,7 +1,8 @@
 <template>
   <form class="form">
     <input class="button" type="submit" name="nearestLocation" value="Nearest Location" v-on:click.prevent="findNearestLocation">
-    <select class="dropdown" name="" @change="selectState">
+    <label for="states">States:</label>
+    <select class="dropdown" id="states" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
         v-for="(state, index) in states"
@@ -9,7 +10,8 @@
         :value="state.state"
       >{{state.state}}</option>
     </select>
-    <select class="dropdown" name="" @change="selectCity">
+    <label for="cities">Cities:</label>
+    <select class="dropdown" id="cities" @change="selectCity">
       <option selected disabled>Choose a City</option>
       <option
         v-for="(city, index) in cities"
