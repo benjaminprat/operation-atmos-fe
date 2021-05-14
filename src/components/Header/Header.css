@@ -1,6 +1,30 @@
 header {
-  background-color: rgba(245, 245, 245, 0.65);
+  background-color: rgba(245, 245, 245, 0.90);
+  border-radius: 1rem;
   color: #2c3e50;
   padding: 2rem;
-  border-radius: .5rem;
-} 
+}
+
+h1 {
+  margin: 0.5rem;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    width: 250px;
+  }
+
+  h2 {
+    font-size: medium;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  header {
+    width: 225px;
+  }
+}
