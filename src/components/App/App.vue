@@ -39,17 +39,15 @@ export default {
     states: [],
     dropdownErrorMessage: ''
   }),
-  mounted: function () {
-    this.$nextTick(function () {
-      this.retrieveLocalStorage()
-      fetchAPI.getStates()
-        .then(data => {
-          this.states = data.data
-        })
-        .catch(() => {
-          this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
-        })
-    })
+  beforeMount: function () {
+    this.retrieveLocalStorage()
+    fetchAPI.getStates()
+      .then(data => {
+        this.states = data.data
+      })
+      .catch(() => {
+        this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
+      })
   },
   methods: {
     retrieveCities (state) {
