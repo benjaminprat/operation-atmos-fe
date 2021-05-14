@@ -33,7 +33,7 @@
 
 .button-delete:hover {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  border-radius: 10px;;
+  border-radius: 10px;
   transition: all 0.4s ease 0s;
   cursor: pointer;
 }
@@ -49,4 +49,25 @@
 .button-refresh:hover {
   font-style: italic;
   cursor: pointer;
+}
+
+.button-allTrails {
+  background-color: #428a13;
+  border: 1px solid #428a13;
+  border-radius: 10px;
+  padding: 3%;
+}
+
+.button-allTrails:hover {
+  cursor: pointer;
+  background-color: #97B481;
+  border: 1px solid #97B481;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.4s ease 0s;
+}
+
+.button-allTrails-text {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
