@@ -82,10 +82,11 @@ export default {
       }
     },
     retrieveLocalStorage () {
-      const saved = localStorage.getItem('savedLocations')
-      if (saved) {
-        this.locations = JSON.parse(saved)
+      const saved = JSON.parse(localStorage.getItem('savedLocations'))
+
+      if (saved.length > 0) {
         this.retrieveCurrent()
+        this.locations = saved
       } else {
         this.locations = []
       }
