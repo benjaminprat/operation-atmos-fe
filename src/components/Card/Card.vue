@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     formatWeatherIcon () {
-      const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n']
+        const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n', '11d', '13d', '50d']
       if (weatherIcons.includes(this.weatherIconSrc)) {
         return this.weatherIconSrc
       } else if (!weatherIcons.includes(this.weatherIconSrc)) {
