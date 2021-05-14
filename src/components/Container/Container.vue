@@ -4,6 +4,7 @@
       v-for="location in locations"
       :key="location.id"
       :id="location.id"
+      :currentLocation="location.currentLocation"
       :temperature="formatTemp(location)"
       :city="location.city"
       :state="location.state"

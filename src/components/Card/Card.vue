@@ -1,10 +1,13 @@
 <template>
   <article class="location-card" :id="id">
-    <div class="button-delete-container">
+    <div v-if="currentLocation">
+      <p>Current Location</p>
+    </div>
+    <div v-else class="button-delete-container">
       <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
     <h2>{{ formatLocation() }}</h2>
-    <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon"> -->
+    <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon">
     <h3>Weather</h3>
     <p>{{ temperature }}°F</p>
     <p>Wind Speed: {{ windSpeed }}mph</p>
@@ -31,6 +34,7 @@
 export default {
   name: 'Card',
   props: {
+    currentLocation: Boolean,
     temperature: Number,
     city: String,
     state: String,
