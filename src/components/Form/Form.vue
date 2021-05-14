@@ -2,7 +2,7 @@
   <form class="form">
     <input class="button" type="submit" name="nearestLocation" value="Nearest Location" v-on:click.prevent="findNearestLocation">
     <label for="states">States:</label>
-    <select class="dropdown" id="states" @change="selectState">
+    <select class="dropdown" id="dropdown-states" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
         v-for="(state, index) in states"
@@ -11,7 +11,7 @@
       >{{state.state}}</option>
     </select>
     <label for="cities">Cities:</label>
-    <select class="dropdown" id="cities" @change="selectCity">
+    <select class="dropdown" id="dropdown-cities" @change="selectCity">
       <option selected disabled>Choose a City</option>
       <option
         v-for="(city, index) in cities"
@@ -37,6 +37,9 @@ export default {
     selectedCity: ''
   }),
   methods: {
+    findNearestLocation () {
+      this.$emit('findNearest')
+    },
     selectState (dropdown) {
       this.selectedState = dropdown.target.value
       this.$emit('updateState', this.selectedState)
@@ -47,9 +50,18 @@ export default {
     submitLocation () {
       const location = { state: this.selectedState, city: this.selectedCity }
       this.$emit('updateLocale', location)
+      this.resetCitiesDropdown()
+      this.resetStatesDropdown()
     },
-    findNearestLocation () {
-      this.$emit('findNearest')
+    resetCitiesDropdown () {
+      const citiesDropdown = document.getElementById('dropdown-cities')
+      this.selectCity = ''
+      citiesDropdown.selectedIndex = null
+    },
+    resetStatesDropdown () {
+      const statesDropdown = document.getElementById('dropdown-states')
+      this.selectState = ''
+      statesDropdown.selectedIndex = null
     }
   }
 }
