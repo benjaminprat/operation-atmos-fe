@@ -164,11 +164,11 @@ export default {
     },
     determineAqiText () {
       if (this.aqi <= 50) {
-        return 'It\'s a great day to be active outside!'
+        return 'It\'s a great day to be  outside.'
       } else if (this.aqi >= 51 && this.aqi <= 100) {
-        return 'It\'s a good day to be active outside! People who are unusually sensitive to air pollution could have symptoms.'
+        return 'It\'s a good day to be outside! People who are unusually sensitive to air pollution could have symptoms.'
       } else if (this.aqi >= 101 && this.aqi <= 150) {
-        return 'It\'s OK to be active outside for short durations. For longer activities, take more breaks and lower the intensity. Members of sensitive groups may experience health effects. Watch for symptoms and take action as needed.'
+        return 'It\'s OK to beoutside for short durations. For longer activities, take more breaks and lower the intensity. Members of sensitive groups may experience health effects. Watch for symptoms and take action as needed.'
       } else if (this.aqi >= 151 && this.aqi <= 200) {
         return 'For all outdoor activities, take more breaks and lower the intensity. Consider moving longer or more intense activities indoors or rescheduling them to another day or time. Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.'
       } else if (this.aqi >= 201 && this.aqi <= 300) {
