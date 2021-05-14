@@ -101,7 +101,7 @@ const locationData = [
   {
     "status": "success",
     "data": {
-      "city": "Glendale",
+      "city": "Breckenridge",
       "state": "Colorado",
       "country": "USA",
       "location": {
@@ -138,7 +138,7 @@ const cityData = {
   "data": [
     {"city": "Denver"},
     {"city": "Thornton"},
-    {"city": "Glendale"},
+    {"city": "Breckenridge"},
     {"city": "Boulder"}
   ]
 }

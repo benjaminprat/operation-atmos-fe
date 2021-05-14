@@ -6,6 +6,7 @@
     <select class="" name="">
       <option>Choose a City</option>
     </select>
+    <input type="submit" name="submit" value="Submit">
   </form>
 </template>
 
@@ -14,6 +15,5 @@ import './Form.css'
 
 export default {
   name: 'Form'
-
 }
 </script>
