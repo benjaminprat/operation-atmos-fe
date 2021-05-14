@@ -2,7 +2,9 @@
   <section class="container">
     <Card
       v-for="(location, index) in locations"
-      :key="index"/>
+      :key="index"
+      :temperature="formatTemp(location)"
+      />
   </section>
 </template>
 
@@ -16,6 +18,14 @@ export default {
   },
   props: {
     locations: Array
+  },
+  methods: {
+
+    formatTemp: function (location) {
+      const temperature = location.data.current.weather.tp
+      return (temperature * 9 / 5 + 32)
+    }
+
   }
 }
 </script>
