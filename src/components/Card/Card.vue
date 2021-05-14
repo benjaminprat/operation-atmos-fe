@@ -1,11 +1,10 @@
 <template>
   <article class="location-card" :id="id">
-    <div class="button-container">
-      <button class="button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">🔄</button>
-      <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+    <div class="button-delete-container">
+      <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
     <h2>{{ locale }}</h2>
-    <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon"> -->
+    <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon">
     <h3>Weather</h3>
     <p>{{ temperature }}°F</p>
     <p>Wind Speed: {{ windSpeed }}mph</p>
@@ -13,7 +12,9 @@
     <h3>Air Quality</h3>
     <p>{{ aqi }} AQI</p>
     <p>{{ determineAqiMessage() }}</p>
-    <p>{{ timeStamp }}</p>
+    <p class="timeStamp">{{ timeStamp }}
+      <button class="card-button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">Refresh</button>
+    </p>
   </article>
 </template>
 

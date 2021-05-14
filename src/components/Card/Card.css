@@ -1,16 +1,3 @@
-.button-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.button-refresh {
-  border: none;
-  background-color: inherit;
-  font-size: 22px;
-  padding: 0;
-  margin: 0;
-}
-
 .location-card {
   border: 1px solid black;
   border-radius: 1rem;
@@ -20,6 +7,46 @@
   width: 300px;
 }
 
-/* .weather-icon {
+.weather-icon {
   width: 80px;
-} */
+}
+
+.timeStamp {
+  font-size: .8em;
+  color: gray;
+}
+
+.card-button {
+  border: none;
+  background-color: inherit;
+  color: #2c3e50;
+}
+
+.button-delete {
+  float: right;
+  font-size: 22px;
+}
+
+.button-delete-container {
+  padding-bottom: 5%;
+}
+
+.button-delete:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border-radius: 10px;;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+}
+
+.button-refresh {
+  color: gray;
+  text-decoration: underline;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button-refresh:hover {
+  font-style: italic;
+  cursor: pointer;
+}
