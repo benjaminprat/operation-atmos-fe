@@ -11,7 +11,7 @@
       >{{state.state}}</option>
     </select>
     <label for="cities">Cities:</label>
-    <select class="dropdown" id="dropdown-cities" @change="selectCity">
+    <select class="dropdown" id="dropdown-cities" @change="selectCity" disabled>
       <option selected disabled>Choose a City</option>
       <option
         v-for="(city, index) in cities"
@@ -20,7 +20,7 @@
       >{{city.city}}</option>
     </select>
     <p>{{ dropdownErrorMessage }}</p>
-    <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation">
+    <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation" disabled>
   </form>
 </template>
 
@@ -43,9 +43,14 @@ export default {
     selectState (dropdown) {
       this.selectedState = dropdown.target.value
       this.$emit('updateState', this.selectedState)
+      document.getElementById('dropdown-cities').removeAttribute('disabled')
     },
     selectCity (dropdown) {
-      this.selectedCity = dropdown.target.value
+      if (!this.selectedState) {
+        document.getElementById('dropdown-cities').setAttribute('disabled')
+      } else {
+        this.selectedCity = dropdown.target.value
+      }
     },
     submitLocation () {
       const location = { state: this.selectedState, city: this.selectedCity }
