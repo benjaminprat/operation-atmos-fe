@@ -43,6 +43,7 @@ export default {
     selectState (dropdown) {
       this.selectedState = dropdown.target.value
       this.$emit('updateState', this.selectedState)
+      document.getElementById('dropdown-cities').selectedIndex = null
       document.getElementById('dropdown-cities').removeAttribute('disabled')
     },
     selectCity (dropdown) {
