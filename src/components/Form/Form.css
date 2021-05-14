@@ -1,18 +1,58 @@
 .form {
-  height: 200px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.90);
+  border-radius: 1rem;
+  color: #2c3e50;
+  height: 150px;
+  width: auto;
+  margin: 1.5rem 0rem 0.5rem 0rem;
   padding: 2rem;
 }
 
 .dropdown {
+  background-color: rgba(245, 245, 245, 0.95);
+  border-radius: 0.35rem;
+  font-size: 18px;
+  text-align-last: center;
+  width: 250px;
+  margin-top: 1.5rem;
+}
+
+.dropdown:focus {
+  background-color: rgba(245, 245, 245, 1);
+  border: 1px solid rgba(3, 64, 1, 0.65);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 0.35rem;
   font-size: 18px;
 }
 
 .button {
+  background-color: rgba(3, 64, 1, 0.65);
+  border: 1px solid black;
+  border-radius: 0.35rem;
+  color: white;
   font-size: 16px;
+}
+
+.button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+  border-radius: 0.35rem;
+}
+
+.button:focus {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease 0s;
+  cursor: pointer;
+  border-radius: 0.35rem;
+}
+
+@media screen and (max-width: 320px) {
+  .form {
+    width: 225px;
+  }
 }

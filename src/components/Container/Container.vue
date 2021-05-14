@@ -31,11 +31,13 @@ export default {
   methods: {
     formatTemp (location) {
       const temperature = location.current.weather.tp
-      return parseFloat((temperature * 9 / 5 + 32).toFixed(1))
+      const fahrenheitTemp = parseFloat((temperature * 9 / 5 + 32).toFixed(1))
+      return fahrenheitTemp
     },
     formatWindSpeed (location) {
       const windSpeed = location.current.weather.ws
-      return parseFloat((windSpeed * 2.237).toFixed(1))
+      const mphSpeed = parseFloat((windSpeed * 2.237).toFixed(1))
+      return mphSpeed
     },
     formatTimeStamp (location) {
       const timeStamp = location.current.weather.ts
