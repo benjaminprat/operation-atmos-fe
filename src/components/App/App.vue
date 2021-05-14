@@ -6,6 +6,7 @@
       :cities="cities"
       :states="states"
       v-on:updateState="retrieveCities"
+      v-on:updateLocale="retrieveLocale"
     />
     <Container :locations="locations" />
   </div>
@@ -15,7 +16,7 @@
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
-import data from '../../data/location-data'
+// import data from '../../data/location-data'
 import fetchAPI from '../../fetchAPI'
 
 export default {
@@ -26,7 +27,7 @@ export default {
     Container
   },
   data: () => ({
-    locations: data.locationData,
+    locations: [],
     cities: [],
     states: []
   }),
@@ -41,6 +42,11 @@ export default {
     retrieveCities (state) {
       fetchAPI.getCities(state).then(data => {
         this.cities = data.data
+      })
+    },
+    retrieveLocale (location) {
+      fetchAPI.getLocale(location.city, location.state).then(data => {
+        this.locations.push(data.data)
       })
     },
     debug (input) {
