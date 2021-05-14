@@ -1,7 +1,7 @@
 <template>
   <header>
-    <h1>ActivAir</h1>
-    <h2>Find fresh air for your outdoor activities.</h2>
+    <h1>Operation Atmos</h1>
+    <h2>Enjoy Outdoor Movement in Fresh Air </h2>
   </header>
 </template>
 

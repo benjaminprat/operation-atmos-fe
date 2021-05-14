@@ -15,10 +15,10 @@
     <h2 class="location-title">{{ formatLocation() }}</h2>
     <h3>Weather</h3>
     <section class="weather-section">
-      <!-- <img
+      <img
         class="weather-icon"
         :src="require(`../../assets/${formatWeatherIcon()}.png`)"
-        :alt="weatherIconAlt"> -->
+        :alt="weatherIconAlt">
       <div class="weather-data-display">
         <p>{{ temperature }}°F</p>
         <p>Wind Speed: {{ windSpeed }}mph</p>
