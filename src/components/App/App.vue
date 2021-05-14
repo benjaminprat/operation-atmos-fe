@@ -87,6 +87,7 @@ export default {
         return location.id === parseInt(id)
       })
       const thisLocationIndex = this.locations.indexOf(thisLocation)
+
       this.locations.splice(thisLocationIndex, 1)
       this.updateLocalStorage()
     },
@@ -94,6 +95,7 @@ export default {
       const foundLocation = this.locations.find(location => {
         return location.city === newLocation.city && location.state === newLocation.state
       })
+
       if (foundLocation) {
         const foundLocationIndex = this.locations.indexOf(foundLocation)
         this.locations[foundLocationIndex] = newLocation
