@@ -62,6 +62,10 @@ export default {
           return this.weatherIconSrc.slice(0, 2) === icon.id.slice(0, 2)
         })
         return nums
+      } else if (this.weatherIconSrc.includes('n')) {
+        return this.weatherIcons[1]
+      } else {
+        return this.weatherIcons[0]
       }
     },
     deleteCard () {
