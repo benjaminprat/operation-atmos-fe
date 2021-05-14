@@ -1,6 +1,9 @@
 <template>
   <article class="location-card" :id="id">
-    <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+    <div class="button-container">
+      <button class="button button-refresh" type="button" name="button" v-on:click.prevent="">🔄</button>
+      <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+    </div>
     <h2>{{ locale }}</h2>
     <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon"> -->
     <h3>Weather</h3>
