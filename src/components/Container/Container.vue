@@ -7,6 +7,8 @@
       :locale="formatLocation(location)"
       :aqi="location.data.current.pollution.aqius"
       :windSpeed="formatWindSpeed(location)"
+      :humidity="location.data.current.weather.hu"
+      :timeStamp="formatTimeStamp(location)"
       />
   </section>
 </template>
@@ -36,6 +38,12 @@ export default {
     formatWindSpeed: function (location) {
       const windSpeed = location.data.current.weather.ws
       return parseInt((windSpeed * 2.237).toFixed(2))
+    },
+
+    formatTimeStamp: function (location) {
+      const timeStamp = location.data.current.weather.ts
+      const date = new Date(timeStamp)
+      return (date.toDateString() + ' ' + date.toLocaleTimeString())
     }
 
   }

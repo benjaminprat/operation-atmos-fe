@@ -5,10 +5,9 @@
     <h3>Weather</h3>
     <p>{{ temperature }}°F</p>
     <p>Wind Speed: {{ windSpeed }}mph</p>
-
+    <p>Humidity: {{ humidity }}%</p>
     <h3>Air Quality</h3>
     <p>{{ aqi }} AQI</p>
-
     <div v-if="aqi <= 50">
       🟢 Good
     </div>
@@ -27,7 +26,7 @@
     <div v-else-if="aqi >= 301">
       💀 Hazardous
     </div>
-
+    <p>{{ timeStamp }}</p>
   </article>
 </template>
 
@@ -38,7 +37,9 @@ export default {
     temperature: Number,
     locale: String,
     aqi: String,
-    windSpeed: Number
+    windSpeed: Number,
+    humidity: String,
+    timeStamp: String
   }
 }
 </script>
