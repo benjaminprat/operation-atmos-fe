@@ -19,6 +19,7 @@
         :value="city.city"
       >{{city.city}}</option>
     </select>
+    <p>{{ dropdownErrorMessage }}</p>
     <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation">
   </form>
 </template>
@@ -28,7 +29,8 @@ export default {
   name: 'Form',
   props: {
     cities: Array,
-    states: Array
+    states: Array,
+    dropdownErrorMessage: String
   },
   data: () => ({
     selectedState: '',

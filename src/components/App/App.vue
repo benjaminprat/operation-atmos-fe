@@ -4,6 +4,7 @@
     <Form
       :cities="cities"
       :states="states"
+      :dropdownErrorMessage="dropdownErrorMessage"
       v-on:updateState="retrieveCities"
       v-on:updateLocale="retrieveLocale"
       v-on:findNearest="retrieveCurrent"
@@ -13,7 +14,6 @@
       v-on:removeCard="removeLocation"
       v-on:refreshLocale="retrieveLocale"
     />
-    <Footer />
   </div>
 </template>
 
@@ -21,7 +21,6 @@
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
-import Footer from '../Footer/Footer'
 import fetchAPI from '../../fetchAPI'
 
 export default {
@@ -29,41 +28,57 @@ export default {
   components: {
     Header,
     Form,
-    Container,
-    Footer
+    Container
   },
   data: () => ({
     locations: [],
     cities: [],
-    states: []
+    states: [],
+    dropdownErrorMessage: ''
   }),
   mounted: function () {
     this.$nextTick(function () {
       this.retrieveLocalStorage()
-      fetchAPI.getStates().then(data => {
-        this.states = data.data
-      })
+      fetchAPI.getStates()
+        .then(data => {
+          this.states = data.data
+        })
+        .catch(() => {
+          this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
+        })
     })
   },
   methods: {
     retrieveCities (state) {
-      fetchAPI.getCities(state).then(data => {
-        this.cities = data.data
-      })
+      fetchAPI.getCities(state)
+        .then(data => {
+          this.cities = data.data
+        })
+        .catch(() => {
+          this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
+        })
     },
     retrieveLocale (location) {
-      fetchAPI.getLocale(location.city, location.state).then(value => {
-        value.data.id = Date.now()
-        this.checkExistingLocations(value.data)
-        this.updateLocalStorage()
-      })
+      fetchAPI.getLocale(location.city, location.state)
+        .then(value => {
+          value.data.id = Date.now()
+          this.checkExistingLocations(value.data)
+          this.updateLocalStorage()
+        })
+        .catch(() => {
+          this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
+        })
     },
     retrieveCurrent () {
-      fetchAPI.getCurrent().then(location => {
-        location.data.id = Date.now()
-        this.checkExistingLocations(location.data)
-        this.updateLocalStorage()
-      })
+      fetchAPI.getCurrent()
+        .then(location => {
+          location.data.id = Date.now()
+          this.checkExistingLocations(location.data)
+          this.updateLocalStorage()
+        })
+        .catch(() => {
+          this.dropdownErrorMessage = 'Please wait a minute and refresh the page. Something went wrong with the server.'
+        })
     },
     removeLocation (id) {
       const thisLocation = this.locations.find(location => {
