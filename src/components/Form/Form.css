@@ -1,0 +1,15 @@
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100px;
+}
+
+.dropdown {
+  font-size: 18px;
+}
+
+.button {
+  font-size: 16px;
+}
