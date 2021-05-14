@@ -81,6 +81,8 @@ export default {
       if (foundLocation) {
         const foundLocationIndex = this.locations.indexOf(foundLocation)
         this.locations[foundLocationIndex] = newLocation
+      } else if (newLocation.currentLocation && !newLocation.message) {
+        this.locations.unshift(newLocation)
       } else if (!newLocation.message) {
         this.locations.push(newLocation)
       }
