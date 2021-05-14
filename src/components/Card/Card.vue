@@ -1,7 +1,7 @@
 <template>
   <article class="location-card" :id="id">
     <div class="button-container">
-      <button class="button button-refresh" type="button" name="button" v-on:click.prevent="">🔄</button>
+       <button class="button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">🔄</button>
       <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     </div>
     <h2>{{ locale }}</h2>
@@ -62,6 +62,11 @@ export default {
     deleteCard () {
       const locationID = event.target.closest('article').id
       this.$parent.$emit('removeCard', locationID)
+    }, 
+    refreshLocation () {
+      const cityState = this.locale.split(', ')
+      const location = { city: cityState[0], state: cityState[1] }
+      this.$parent.$emit('refreshLocale', location)
     }
   }
 }

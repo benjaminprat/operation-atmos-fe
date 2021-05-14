@@ -11,6 +11,7 @@
     <Container
       :locations="locations"
       v-on:removeCard="removeLocation"
+      v-on:refreshLocale="retrieveLocale"
     />
   </div>
 </template>
