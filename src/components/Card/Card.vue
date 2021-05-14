@@ -106,8 +106,8 @@ export default {
       }
     },
     generateAllTrailsURL () {
-      const formattedCity = this.city.toLowerCase() // ACCOUNT FOR SPACES
-      const formattedState = this.state.toLowerCase()
+      const formattedCity = this.city.replace(/\s+/g, '-').toLowerCase()
+      const formattedState = this.state.replace(/\s+/g, '-').toLowerCase()
       return `https://www.alltrails.com/us/${formattedState}/${formattedCity}`
     },
     refreshLocation () {
