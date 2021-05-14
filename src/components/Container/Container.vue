@@ -4,6 +4,7 @@
       v-for="(location, index) in locations"
       :key="index"
       :temperature="formatTemp(location)"
+      :locale="formatLocation(location)"
       />
   </section>
 </template>
@@ -24,6 +25,10 @@ export default {
     formatTemp: function (location) {
       const temperature = location.data.current.weather.tp
       return (temperature * 9 / 5 + 32)
+    },
+
+    formatLocation: function (location) {
+      return `${location.data.city}, ${location.data.state}`
     }
 
   }

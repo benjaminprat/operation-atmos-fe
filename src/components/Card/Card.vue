@@ -1,6 +1,6 @@
 <template>
   <article class="location-card">
-    <h2>Denver, CO</h2>
+    <h2>{{ locale }}</h2>
     <!-- <img src="../../assets/01d.png" class="weather-icon"> -->
     <h3>Weather</h3>
     <p>{{ temperature }}</p>
@@ -12,7 +12,8 @@
 export default {
   name: 'Card',
   props: {
-    temperature: Number
+    temperature: Number,
+    locale: String
   }
 }
 </script>
