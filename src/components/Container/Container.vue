@@ -39,7 +39,8 @@ export default {
     formatTimeStamp (location) {
       const timeStamp = location.current.weather.ts
       const date = new Date(timeStamp)
-      return (date.toDateString() + ' ' + date.toLocaleTimeString())
+      const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      return `${date.toDateString()} at ${time}`
     }
   }
 }
