@@ -5,7 +5,8 @@
       :key="index"
       :temperature="formatTemp(location)"
       :locale="formatLocation(location)"
-      :quality="location.data.current.pollution.aqius"
+      :aqi="location.data.current.pollution.aqius"
+      :windSpeed="formatWindSpeed(location)"
       />
   </section>
 </template>
@@ -30,6 +31,11 @@ export default {
 
     formatLocation: function (location) {
       return `${location.data.city}, ${location.data.state}`
+    },
+
+    formatWindSpeed: function (location) {
+      const windSpeed = location.data.current.weather.ws
+      return parseInt((windSpeed * 2.237).toFixed(2))
     }
 
   }
