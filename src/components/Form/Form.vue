@@ -2,6 +2,11 @@
   <form class="">
     <select class="" name="">
       <option>Choose a State</option>
+      <option
+        v-for="(state, index) in states"
+        :key="index"
+        :value="state.state"
+      >{{state.state}}</option>
     </select>
     <select class="" name="">
       <option>Choose a City</option>
@@ -19,7 +24,8 @@
 export default {
   name: 'Form',
   props: {
-    cities: Array
+    cities: Array,
+    states: Array
   }
 }
 </script>

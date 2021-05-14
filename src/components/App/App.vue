@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>{{debug(cities)}}</p>
+    <!-- <p>{{debug(cities)}}</p> -->
     <Header />
-    <Form :cities="cities" />
+    <Form :cities="cities" :states="states" />
     <Container />
   </div>
 </template>
@@ -21,7 +21,8 @@ export default {
     Container
   },
   data: () => ({
-    cities: data.cityData.data
+    cities: data.cityData.data,
+    states: data.stateData.data
   }),
   methods: {
     debug (input) {
