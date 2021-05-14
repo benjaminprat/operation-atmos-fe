@@ -1,7 +1,7 @@
 <template>
   <article class="location-card">
     <h2>{{ locale }}</h2>
-    <img :src="require(`../../assets/${weatherIconSrc}.png`)" class="weather-icon">
+    <!-- <img :src="require(`../../assets/${weatherIconSrc}.png`)" class="weather-icon"> -->
     <h3>Weather</h3>
     <p>{{ temperature }}°F</p>
     <p>Wind Speed: {{ windSpeed }}mph</p>
