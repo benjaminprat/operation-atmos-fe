@@ -83,8 +83,12 @@ export default {
     },
     retrieveLocalStorage () {
       const saved = localStorage.getItem('savedLocations')
-      this.locations = JSON.parse(saved)
-      this.retrieveCurrent()
+      if (saved) {
+        this.locations = JSON.parse(saved)
+        this.retrieveCurrent()
+      } else {
+        this.locations = []
+      }
     },
     updateLocalStorage () {
       const locationData = JSON.stringify(this.locations)
