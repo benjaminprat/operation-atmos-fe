@@ -6,6 +6,7 @@
       :states="states"
       v-on:updateState="retrieveCities"
       v-on:updateLocale="retrieveLocale"
+      v-on:findNearest="retrieveCurrent"
     />
     <Container :locations="locations" />
   </div>
@@ -47,7 +48,11 @@ export default {
         this.locations.push(data.data)
       })
     },
-   
+    retrieveCurrent () {
+      fetchAPI.getCurrent().then(data => {
+        this.locations.unshift(data.data)
+      })
+    }
   }
 }
 </script>

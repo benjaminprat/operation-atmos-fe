@@ -1,5 +1,6 @@
 <template>
   <form class="form">
+    <input class="button" type="submit" name="nearestLocation" value="Nearest Location" v-on:click.prevent="findNearestLocation">
     <select class="dropdown" name="" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
@@ -42,6 +43,9 @@ export default {
     submitLocation () {
       const location = { state: this.selectedState, city: this.selectedCity }
       this.$emit('updateLocale', location)
+    },
+    findNearestLocation () {
+      this.$emit('findNearest')
     }
   }
 }

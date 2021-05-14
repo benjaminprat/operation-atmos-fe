@@ -15,5 +15,11 @@ export default {
     return fetch(`http://api.airvisual.com/v2/city?city=${city}&state=${state}&country=USA&key=f5bb78f7-2da9-4639-9522-6e0786c72a31`)
       .then(response => response.json())
       .catch(error => console.log(error))
+  },
+
+  getCurrent () {
+    return fetch('http://api.airvisual.com/v2/nearest_city?key=f5bb78f7-2da9-4639-9522-6e0786c72a31')
+      .then(response => response.json())
+      .catch(error => console.log(error))
   }
 }
