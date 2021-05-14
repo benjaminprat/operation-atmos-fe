@@ -2,7 +2,11 @@
   <div>
     <!-- <p>{{debug(cities)}}</p> -->
     <Header />
-    <Form :cities="cities" :states="states" />
+    <Form
+      :cities="cities"
+      :states="states"
+      v-on:updateState="retrieveCities"
+    />
     <Container :locations="locations" />
   </div>
 </template>
@@ -23,7 +27,7 @@ export default {
   },
   data: () => ({
     locations: data.locationData,
-    cities: data.cityData.data,
+    cities: [],
     states: []
   }),
   mounted: function () {
@@ -34,6 +38,11 @@ export default {
     })
   },
   methods: {
+    retrieveCities (state) {
+      fetchAPI.getCities(state).then(data => {
+        this.cities = data.data
+      })
+    },
     debug (input) {
       console.log(input)
     }

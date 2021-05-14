@@ -1,6 +1,6 @@
 <template>
   <form class="">
-    <select class="" name="">
+    <select class="" name="" @change="selectState">
       <option>Choose a State</option>
       <option
         v-for="(state, index) in states"
@@ -26,6 +26,15 @@ export default {
   props: {
     cities: Array,
     states: Array
+  },
+  data: () => ({
+    selectedState: 'Choose a State'
+  }),
+  methods: {
+    selectState (dropdown) {
+      this.selectedState = dropdown.target.value
+      this.$emit('updateState', this.selectedState)
+    }
   }
 }
 </script>
