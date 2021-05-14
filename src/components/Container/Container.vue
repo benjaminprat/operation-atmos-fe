@@ -5,6 +5,7 @@
       :key="index"
       :temperature="formatTemp(location)"
       :locale="formatLocation(location)"
+      :quality="location.data.current.pollution.aqius"
       />
   </section>
 </template>

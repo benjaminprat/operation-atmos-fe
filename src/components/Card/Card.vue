@@ -3,8 +3,9 @@
     <h2>{{ locale }}</h2>
     <!-- <img src="../../assets/01d.png" class="weather-icon"> -->
     <h3>Weather</h3>
-    <p>{{ temperature }}</p>
-    <h3>AirQ</h3>
+    <p>{{ temperature }}°F</p>
+    <h3>Air Quality</h3>
+    <p>{{ quality }} AQI</p>
   </article>
 </template>
 
@@ -13,7 +14,8 @@ export default {
   name: 'Card',
   props: {
     temperature: Number,
-    locale: String
+    locale: String,
+    quality: String
   }
 }
 </script>
