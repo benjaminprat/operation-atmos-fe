@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>{{debug(cities)}}</p>
     <Header />
     <Form :cities="cities" />
     <Container />
@@ -7,7 +8,6 @@
 </template>
 
 <script>
-import './App.css'
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
@@ -21,7 +21,14 @@ export default {
     Container
   },
   data: () => ({
-    cities: data.cityData
-  })
+    cities: data.cityData.data
+  }),
+  methods: {
+    debug (input) {
+      console.log(input)
+    }
+  }
 }
 </script>
+
+<style src='./App.css'></style>

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import './Container.css'
 import Card from '../Card/Card'
 
 export default {
@@ -15,3 +14,5 @@ export default {
   }
 }
 </script>
+
+<style src='./Container.css'></style>

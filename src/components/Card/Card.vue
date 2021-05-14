@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import './Card.css'
-
 export default {
   name: 'Card'
 }
 </script>
+
+<style src='./Card.css'></style>
