@@ -1,31 +1,71 @@
 <template>
   <article class="location-card" :id="id">
     <div v-if="currentLocation">
-      <p>Current Location</p>
+      <p><b>Current Location</b></p>
     </div>
     <div v-else class="button-delete-container">
-      <button class="card-button button-delete" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
+      <button
+        class="card-button button-delete"
+        type="button"
+        name="button"
+        v-on:click.prevent="deleteCard">
+        X
+      </button>
     </div>
-    <h2>{{ formatLocation() }}</h2>
-    <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" :alt="weatherIconAlt" class="weather-icon"> -->
+    <h2 class="location-title">{{ formatLocation() }}</h2>
     <h3>Weather</h3>
-    <p>{{ temperature }}°F</p>
-    <p>Wind Speed: {{ windSpeed }}mph</p>
-    <p>Humidity: {{ humidity }}%</p>
+    <section class="weather-section">
+      <!-- <img
+        class="weather-icon"
+        :src="require(`../../assets/${formatWeatherIcon()}.png`)"
+        :alt="weatherIconAlt"> -->
+      <div class="weather-data-display">
+        <p>{{ temperature }}°F</p>
+        <p>Wind Speed: {{ windSpeed }}mph</p>
+        <p>Humidity: {{ humidity }}%</p>
+      </div>
+    </section>
     <hr>
-    <h3>Air Quality</h3>
+    <h3 class="aqi-heading">Air Quality</h3>
     <div class="aqi-message">
-      <div class="aqi-circle" :style="determineAqiStyle()"><p>AQI: {{ aqi }}</p></div>
-      <p class="aqi-rating"><b>{{ determineAqiRating() }} </b><a href="https://www.airnow.gov/aqi-and-health/" target="_blank"><img src="https://img.icons8.com/metro/16/000000/info.png"/></a></p>
+      <div
+        class="aqi-circle"
+        :style="determineAqiStyle()">
+        <p>AQI: {{ aqi }}</p>
+      </div>
+      <p class="aqi-rating"><b>{{ determineAqiRating() }} </b>
+        <a
+          href="https://www.airnow.gov/aqi-and-health/"
+          target="_blank"
+          rel="noreferrer">
+          <img
+            src="https://img.icons8.com/metro/16/000000/info.png"
+            alt="black circle with lowercase i icon for more information"/>
+        </a>
+      </p>
       <p class="aqi-text">{{ determineAqiText() }}</p>
     </div>
     <hr>
-    <button class="button-allTrails" type="button" name="button">
-      <a :href="generateAllTrailsURL()" target="_blank" class="button-allTrails-text">Plan an activity in {{ city }} on AllTrails</a>
-    </button>
+    <a
+      :href="generateAllTrailsURL()"
+      target="_blank"
+      rel="noreferrer">
+      <button
+        class="button-allTrails"
+        type="button"
+        name="button">
+        Plan an activity in {{ city }} on AllTrails
+      </button>
+    </a>
     <hr>
     <p class="timeStamp">Last Update: {{ timeStamp }}
-      <button class="card-button button-refresh" type="button" name="button" v-on:click.prevent="refreshLocation">Refresh</button>
+      <button
+        class="card-button button-refresh"
+        type="button"
+        name="button"
+        v-on:click.prevent="refreshLocation">
+        Refresh
+      </button>
     </p>
   </article>
 </template>
