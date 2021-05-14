@@ -13,6 +13,7 @@
       v-on:removeCard="removeLocation"
       v-on:refreshLocale="retrieveLocale"
     />
+    <Footer />
   </div>
 </template>
 
@@ -20,6 +21,7 @@
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
+import Footer from '../Footer/Footer'
 import fetchAPI from '../../fetchAPI'
 
 export default {
@@ -27,7 +29,8 @@ export default {
   components: {
     Header,
     Form,
-    Container
+    Container,
+    Footer
   },
   data: () => ({
     locations: [],
