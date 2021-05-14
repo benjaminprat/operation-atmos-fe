@@ -47,15 +47,15 @@ export default {
       })
     },
     retrieveLocale (location) {
-      fetchAPI.getLocale(location.city, location.state).then(data => {
-        data.data.id = Date.now()
-        this.locations.push(data.data)
+      fetchAPI.getLocale(location.city, location.state).then(value => {
+        value.data.id = Date.now()
+        this.checkExistingLocations(value.data)
       })
     },
     retrieveCurrent () {
-      fetchAPI.getCurrent().then(data => {
-        data.data.id = Date.now()
-        this.locations.unshift(data.data)
+      fetchAPI.getCurrent().then(location => {
+        location.data.id = Date.now()
+        this.checkExistingLocations(location.data)
       })
     },
     removeLocation (id) {
@@ -64,6 +64,17 @@ export default {
       })
       const thisLocationIndex = this.locations.indexOf(thisLocation)
       this.locations.splice(thisLocationIndex, 1)
+    },
+    checkExistingLocations (newLocation) {
+      const foundLocation = this.locations.find(location => {
+        return location.city === newLocation.city && location.state === newLocation.state
+      })
+      if (foundLocation) {
+        const foundLocationIndex = this.locations.indexOf(foundLocation)
+        this.locations[foundLocationIndex] = newLocation
+      } else {
+        this.locations.push(newLocation)
+      }
     }
   }
 }
