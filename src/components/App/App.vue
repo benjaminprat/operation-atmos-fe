@@ -3,7 +3,7 @@
     <!-- <p>{{debug(cities)}}</p> -->
     <Header />
     <Form :cities="cities" :states="states" />
-    <Container />
+    <Container :locations="locations" />
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
     Container
   },
   data: () => ({
+    locations: data.locationData,
     cities: data.cityData.data,
     states: data.stateData.data
   }),

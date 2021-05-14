@@ -1,6 +1,8 @@
 <template>
   <section>
-    <Card />
+    <Card
+      v-for="(location, index) in locations"
+      :key="index"/>
   </section>
 </template>
 
@@ -11,6 +13,9 @@ export default {
   name: 'Container',
   components: {
     Card
+  },
+  props: {
+    locations: Array
   }
 }
 </script>
