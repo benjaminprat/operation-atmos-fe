@@ -1,0 +1,11 @@
+.location-card {
+  width: 200px;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+/* .weather-icon {
+  width: 80px;
+} */

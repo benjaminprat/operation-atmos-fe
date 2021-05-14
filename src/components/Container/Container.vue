@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container">
     <Card
       v-for="(location, index) in locations"
       :key="index"/>
