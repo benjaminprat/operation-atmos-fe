@@ -8,7 +8,10 @@
       v-on:updateLocale="retrieveLocale"
       v-on:findNearest="retrieveCurrent"
     />
-    <Container :locations="locations" />
+    <Container
+      :locations="locations"
+      v-on:removeCard="removeLocation"
+    />
   </div>
 </template>
 
@@ -45,13 +48,22 @@ export default {
     },
     retrieveLocale (location) {
       fetchAPI.getLocale(location.city, location.state).then(data => {
+        data.data.id = Date.now()
         this.locations.push(data.data)
       })
     },
     retrieveCurrent () {
       fetchAPI.getCurrent().then(data => {
+        data.data.id = Date.now()
         this.locations.unshift(data.data)
       })
+    },
+    removeLocation (id) {
+      const thisLocation = this.locations.find(location => {
+        return location.id === parseInt(id)
+      })
+      const thisLocationIndex = this.locations.indexOf(thisLocation)
+      this.locations.splice(thisLocationIndex, 1)
     }
   }
 }

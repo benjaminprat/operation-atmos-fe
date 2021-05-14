@@ -1,14 +1,15 @@
 <template>
   <section class="container">
     <Card
-      v-for="(location, index) in locations"
-      :key="index"
+      v-for="location in locations"
+      :key="location.id"
+      :id="location.id"
       :temperature="formatTemp(location)"
       :locale="formatLocation(location)"
-      :aqi="location.current.pollution.aqius"
       :windSpeed="formatWindSpeed(location)"
-      :humidity="location.current.weather.hu"
       :timeStamp="formatTimeStamp(location)"
+      :aqi="location.current.pollution.aqius"
+      :humidity="location.current.weather.hu"
       :weatherIconSrc="location.current.weather.ic"
       />
   </section>
@@ -29,7 +30,7 @@ export default {
 
     formatTemp: function (location) {
       const temperature = location.current.weather.tp
-      return (temperature * 9 / 5 + 32)
+      return parseFloat((temperature * 9 / 5 + 32).toFixed(1))
     },
 
     formatLocation: function (location) {
@@ -38,7 +39,7 @@ export default {
 
     formatWindSpeed: function (location) {
       const windSpeed = location.current.weather.ws
-      return parseInt((windSpeed * 2.237).toFixed(2))
+      return parseFloat((windSpeed * 2.237).toFixed(1))
     },
 
     formatTimeStamp: function (location) {

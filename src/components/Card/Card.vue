@@ -1,5 +1,6 @@
 <template>
-  <article class="location-card">
+  <article class="location-card" :id="id">
+    <button class="button" type="button" name="button" v-on:click.prevent="deleteCard">X</button>
     <h2>{{ locale }}</h2>
     <!-- <img :src="require(`../../assets/${formatWeatherIcon()}.png`)" class="weather-icon"> -->
     <h3>Weather</h3>
@@ -40,11 +41,12 @@ export default {
     windSpeed: Number,
     humidity: Number,
     timeStamp: String,
-    weatherIconSrc: String
+    weatherIconSrc: String,
+    id: Number
   },
   methods: {
     formatWeatherIcon () {
-        const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n', '11d', '13d', '50d']
+      const weatherIcons = ['01d', '01n', '02d', '02n', '03d', '04d', '09d', '10d', '10n', '11d', '13d', '50d']
       if (weatherIcons.includes(this.weatherIconSrc)) {
         return this.weatherIconSrc
       } else if (!weatherIcons.includes(this.weatherIconSrc)) {
@@ -53,6 +55,10 @@ export default {
         })
         return nums
       }
+    },
+    deleteCard () {
+      const locationID = event.target.closest('article').id
+      this.$parent.$emit('removeCard', locationID)
     }
   }
 }
