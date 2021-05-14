@@ -111,8 +111,7 @@ export default {
       return `https://www.alltrails.com/us/${formattedState}/${formattedCity}`
     },
     refreshLocation () {
-      const cityState = this.locale.split(', ') // refactor this
-      const location = { city: cityState[0], state: cityState[1] }
+      const location = { city: this.city, state: this.state }
       this.$parent.$emit('refreshLocale', location)
     }
   }
