@@ -5,6 +5,11 @@
     </select>
     <select class="" name="">
       <option>Choose a City</option>
+      <option
+        v-for="(city, index) in cities"
+        :key="index"
+        :value="city.city"
+      ></option>
     </select>
     <input type="submit" name="submit" value="Submit">
   </form>
@@ -14,6 +19,9 @@
 import './Form.css'
 
 export default {
-  name: 'Form'
+  name: 'Form',
+  props: {
+    cities: Object
+  }
 }
 </script>

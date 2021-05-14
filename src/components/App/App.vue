@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <Form />
+    <Form :cities="cities" />
     <Container />
   </div>
 </template>
@@ -11,6 +11,7 @@ import './App.css'
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
+import data from '../../data/location-data'
 
 export default {
   name: 'App',
@@ -18,6 +19,9 @@ export default {
     Header,
     Form,
     Container
-  }
+  },
+  data: () => ({
+    cities: data.cityData
+  })
 }
 </script>
