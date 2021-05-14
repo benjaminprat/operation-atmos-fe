@@ -36,6 +36,7 @@ export default {
   }),
   mounted: function () {
     this.$nextTick(function () {
+      this.retrieveLocalStorage()
       fetchAPI.getStates().then(data => {
         this.states = data.data
       })
@@ -51,12 +52,14 @@ export default {
       fetchAPI.getLocale(location.city, location.state).then(value => {
         value.data.id = Date.now()
         this.checkExistingLocations(value.data)
+        this.updateLocalStorage()
       })
     },
     retrieveCurrent () {
       fetchAPI.getCurrent().then(location => {
         location.data.id = Date.now()
         this.checkExistingLocations(location.data)
+        this.updateLocalStorage()
       })
     },
     removeLocation (id) {
@@ -65,6 +68,7 @@ export default {
       })
       const thisLocationIndex = this.locations.indexOf(thisLocation)
       this.locations.splice(thisLocationIndex, 1)
+      this.updateLocalStorage()
     },
     checkExistingLocations (newLocation) {
       const foundLocation = this.locations.find(location => {
@@ -76,6 +80,15 @@ export default {
       } else {
         this.locations.push(newLocation)
       }
+    },
+    retrieveLocalStorage () {
+      const saved = localStorage.getItem('savedLocations')
+      this.locations = JSON.parse(saved)
+      this.retrieveCurrent()
+    },
+    updateLocalStorage () {
+      const locationData = JSON.stringify(this.locations)
+      localStorage.setItem('savedLocations', locationData)
     }
   }
 }
