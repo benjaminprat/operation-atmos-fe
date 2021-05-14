@@ -77,14 +77,14 @@ export default {
       if (foundLocation) {
         const foundLocationIndex = this.locations.indexOf(foundLocation)
         this.locations[foundLocationIndex] = newLocation
-      } else {
+      } else if (!newLocation.message) {
         this.locations.push(newLocation)
       }
     },
     retrieveLocalStorage () {
       const saved = JSON.parse(localStorage.getItem('savedLocations'))
 
-      if (saved.length > 0) {
+      if (saved && saved.length > 0) {
         this.retrieveCurrent()
         this.locations = saved
       } else {
