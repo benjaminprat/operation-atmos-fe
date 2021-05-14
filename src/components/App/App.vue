@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <p>{{debug(cities)}}</p> -->
     <Header />
     <Form
       :cities="cities"
@@ -16,7 +15,6 @@
 import Header from '../Header/Header'
 import Form from '../Form/Form'
 import Container from '../Container/Container'
-// import data from '../../data/location-data'
 import fetchAPI from '../../fetchAPI'
 
 export default {
@@ -49,9 +47,7 @@ export default {
         this.locations.push(data.data)
       })
     },
-    debug (input) {
-      console.log(input)
-    }
+   
   }
 }
 </script>

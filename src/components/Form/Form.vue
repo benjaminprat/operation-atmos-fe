@@ -1,6 +1,6 @@
 <template>
   <form class="">
-    <select class="" name=""  @change="selectState">
+    <select class="" name="" @change="selectState">
       <option selected disabled>Choose a State</option>
       <option
         v-for="(state, index) in states"
