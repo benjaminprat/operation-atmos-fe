@@ -1,11 +1,12 @@
 .form {
-  align-items: center;
-  background-color: pink;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   height: 200px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: whitesmoke;
+  padding: 2rem;
 }
 
 .dropdown {
