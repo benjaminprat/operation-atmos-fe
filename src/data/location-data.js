@@ -49,7 +49,7 @@ export default {
         current: {
           weather: {
             ts: '2021-02-24T02:00:00.000Z',
-            tp: 7,
+            tp: 9,
             pr: 1013,
             hu: 25,
             ws: 7.72,
@@ -82,7 +82,7 @@ export default {
         current: {
           weather: {
             ts: '2021-02-24T02:00:00.000Z',
-            tp: 7,
+            tp: 13,
             pr: 1013,
             hu: 25,
             ws: 7.72,
@@ -115,7 +115,7 @@ export default {
         current: {
           weather: {
             ts: '2021-02-24T02:00:00.000Z',
-            tp: 7,
+            tp: 25,
             pr: 1013,
             hu: 25,
             ws: 7.72,
