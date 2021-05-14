@@ -47,7 +47,7 @@ export default {
     },
     selectCity (dropdown) {
       if (!this.selectedState) {
-        document.getElementById('dropdown-cities').setAttribute('disabled')
+        document.getElementById('dropdown-cities').setAttribute('disabled', 'true')
       } else {
         this.selectedCity = dropdown.target.value
         document.getElementById('submit').removeAttribute('disabled')
@@ -58,13 +58,15 @@ export default {
       this.$emit('updateLocale', location)
       this.resetCitiesDropdown()
       this.resetStatesDropdown()
+      document.getElementById('submit').setAttribute('disabled', 'true')
     },
     resetCitiesDropdown () {
-      this.selectCity = ''
+      this.selectedCity = ''
       document.getElementById('dropdown-cities').selectedIndex = null
+      document.getElementById('dropdown-cities').setAttribute('disabled', 'true')
     },
     resetStatesDropdown () {
-      this.selectState = ''
+      this.selectedState = ''
       document.getElementById('dropdown-states').selectedIndex = null
     }
   }
