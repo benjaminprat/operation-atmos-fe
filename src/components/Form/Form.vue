@@ -20,7 +20,7 @@
       >{{city.city}}</option>
     </select>
     <p>{{ dropdownErrorMessage }}</p>
-    <input class="button" type="submit" name="submit" value="Submit" v-on:click.prevent="submitLocation" disabled>
+    <input class="button" type="submit" name="submit" value="Submit" id="submit" v-on:click.prevent="submitLocation" disabled>
   </form>
 </template>
 
@@ -50,6 +50,7 @@ export default {
         document.getElementById('dropdown-cities').setAttribute('disabled')
       } else {
         this.selectedCity = dropdown.target.value
+        document.getElementById('submit').removeAttribute('disabled')
       }
     },
     submitLocation () {
@@ -59,14 +60,12 @@ export default {
       this.resetStatesDropdown()
     },
     resetCitiesDropdown () {
-      const citiesDropdown = document.getElementById('dropdown-cities')
       this.selectCity = ''
-      citiesDropdown.selectedIndex = null
+      document.getElementById('dropdown-cities').selectedIndex = null
     },
     resetStatesDropdown () {
-      const statesDropdown = document.getElementById('dropdown-states')
       this.selectState = ''
-      statesDropdown.selectedIndex = null
+      document.getElementById('dropdown-states').selectedIndex = null
     }
   }
 }
